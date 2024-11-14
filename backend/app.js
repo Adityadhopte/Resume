@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from "dotenv";
 import dbConnection from './dbConnection.js';
+import { errorMiddleware } from './middlewares/errors.js';
 
 
 
@@ -27,5 +28,6 @@ app.use(fileUpload({
 }));
 
 dbConnection();
+app.use(errorMiddleware)
 
 export default app;
